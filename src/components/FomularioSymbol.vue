@@ -74,7 +74,7 @@ export default {
   },
   methods: {
       getEmpresas(){
-        var url = 'api'
+        var url = 'https://nyse-app-add.herokuapp.com/api/empresas/'
          axios
           //.get('/symbol/'+this.symbol.charAt(0)+'.htm',  {headers: {'Access-Control-Allow-Origin':'*'} })
           .get(url,  {headers: {'Access-Control-Allow-Origin':'*'} })
@@ -96,12 +96,12 @@ export default {
           return 0
         }
 
-          const url = 'symbol/markets/NYSE/symbols/'+this.symbol.charAt(0)+'.htm'
+          const url = 'https://www.findata.co.nz/markets/NYSE/symbols/'+this.symbol.charAt(0)+'.htm'
           axios
           //.get('/symbol/'+this.symbol.charAt(0)+'.htm',  {headers: {'Access-Control-Allow-Origin':'*'} })
           .get(url,  {headers: {'Access-Control-Allow-Origin':'*'} })
           .then(response => {if (response.data.includes('>'+ this.symbol + '</A></td>')){alert('El simbolo es correcto')} else{alert('Simbolo no valido'); return 0}
-          axios.post('api', {nombre:this.nombre, descripcion:this.descripcion, simbolo:this.symbol, valores_de_mercado:this.valores})
+          axios.post('https://nyse-app-add.herokuapp.com/api/empresas/', {nombre:this.nombre, descripcion:this.descripcion, simbolo:this.symbol, valores_de_mercado:this.valores})
           .then(() => {alert('registrado')
           this.getEmpresas()
           this.symbol = ''
