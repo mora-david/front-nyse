@@ -8,7 +8,7 @@ module.exports = {
             }
         },
         '^/api': {
-          target: 'http://127.0.0.1:8000/api/empresas/',
+          target: 'https://nyse-app-add.herokuapp.com/api/empresas/',
           pathRewrite: {
             '^/api' : '/'
             }
