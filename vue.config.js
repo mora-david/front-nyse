@@ -1,13 +1,13 @@
 module.exports = {
     devServer: {
       proxy: {
-        '/symbol': {
+        '^/symbol': {
           target: 'https://www.findata.co.nz',
           pathRewrite: {
             '^/symbol' : '/'
             }
         },
-        '/api': {
+        '^/api': {
           target: 'https://nyse-app-add.herokuapp.com/api/empresas/',
           pathRewrite: {
             '^/api' : '/'

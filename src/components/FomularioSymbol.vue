@@ -96,7 +96,7 @@ export default {
           return 0
         }
 
-          const url = '/symbol/markets/NYSE/symbols/'+this.symbol.charAt(0)+'.htm'
+          const url = 'symbol/markets/NYSE/symbols/'+this.symbol.charAt(0)+'.htm'
           axios
           //.get('/symbol/'+this.symbol.charAt(0)+'.htm',  {headers: {'Access-Control-Allow-Origin':'*'} })
           .get(url,  {headers: {'Access-Control-Allow-Origin':'*'} })
