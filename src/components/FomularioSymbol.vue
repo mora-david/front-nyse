@@ -104,6 +104,7 @@ export default {
           //.then(response => {if (response.data.includes('>'+ this.symbol + '</A></td>')){alert('El simbolo es correcto')} else{alert('Simbolo no valido'); return 0}
           axios.post('https://appnyse.herokuapp.com/api/empresas/', {nombre:this.nombre, descripcion:this.descripcion, simbolo:this.symbol, valores_de_mercado:this.valores})
           .then(response => {alert(response.data)
+          console.log(response.data)
           this.getEmpresas()
           this.symbol = ''
           this.nombre = '',
