@@ -1,7 +1,7 @@
 module.exports = {
     devServer: {
       proxy: {
-        '^/symbol': {
+        'symbol': {
           target: 'https://www.findata.co.nz',
           pathRewrite: {
             '^/symbol' : '/'
