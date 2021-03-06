@@ -111,7 +111,7 @@ export default {
           this.descripcion = ''
           this.valores = []
           })
-          .catch(error => alert(error, 'verificar campos'))
+          .catch(error => alert(error + 'verificar campos'))
           
           
           
