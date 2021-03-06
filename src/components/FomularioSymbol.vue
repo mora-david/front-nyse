@@ -1,28 +1,25 @@
 <template>
 <div>
+  <div class="container">
 <div class="mb-3">
   <label for="formGroupExampleInput" class="form-label" >Nombre de la compañía</label>
-  <input minlength="5" v-model="nombre" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+  <input minlength="5" v-model="nombre" type="text" class="form-control" id="formGroupExampleInput" placeholder="Introduce el nombre de la compañía">
 </div>
 <div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label">Descripción de la compañía</label>
-  <input v-model="descripcion" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+  <input v-model="descripcion" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Introduce la descripción de la compañía">
 </div>
 <div class="mb-3">
   <label  for="formGroupExampleInput2" class="form-label">Símbolo</label>
-  <input v-model="symbol" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+  <input v-model="symbol" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Introduce un Símbolo válido">
 </div>
 <div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label">Valores de Mercado</label>
-  <input v-model="valores" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+  <input v-model="valores" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Introduce hasta 50 valores">
 </div>
 <button class="ui fluid pink button big" @click="formSubmit()">ENVIAR</button>
-
+</div>
 <div>
-
-
-
-
 <div style="padding:100px">
 <div>Lista de empresas registradas</div>
 <table class="table">
@@ -33,18 +30,32 @@
       <th scope="col">Descripción</th>
       <th scope="col">Símbolo</th>
       <th scope="col">Valores de mercado</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Eliminar</th>
     </tr>
   </thead>
   <tbody>
-    <tr v-for="empresa in empresas" :key="empresa.uuid">
+    <tr v-for="empresa in empresas" :key="empresa.id">
       <th scope="row">{{empresa.id}}</th>
       <td>{{empresa.nombre}}</td>
       <td>{{empresa.descripcion}}</td>
       <td>{{empresa.simbolo}}</td>
       <td>{{empresa.valores_de_mercado}}</td>
-
-
-
+      <td><button @click="showInfo(empresa.id)">Editar</button>
+      <div class="edit-inputs" :id="'edit-div-inputs'+empresa.id">
+<label for="">Nombre</label>
+<input :id="'edit-nombre' + empresa.id" type="text" :value='empresa.nombre'>
+<label for="">Descripción</label>
+<input :id="'edit-descripcion' + empresa.id" type="text" :value="empresa.descripcion">
+<label for="">Símbolo</label>
+<input :id="'edit-simbolo' + empresa.id" type="text" :value="empresa.simbolo">
+<label for="">Valores</label>
+<input :id="'edit-valores' + empresa.id" type="text" :value="empresa.valores_de_mercado">
+<button @click="putInfo(empresa.id, empresa.nombre, empresa.descripcion, empresa.simbolo, empresa.valores_de_mercado)">Actualizar</button>
+      </div>
+      
+      </td>
+      <td><button @click="deleteCompany(empresa.id)">Eliminar</button></td>
     </tr>
   </tbody>
 </table>
@@ -73,6 +84,26 @@ export default {
     this.getEmpresas()
   },
   methods: {
+      deleteCompany(eluuid){
+        var url = 'https://appnyse.herokuapp.com/api/empresas/' + eluuid + '/'
+        axios.delete(url).then(response=>{(alert('eliminado')); this.getEmpresas(); return response}).catch(error=>alert(error))
+
+
+      },
+      putInfo(eluuid){
+        var name = document.getElementById('edit-nombre'+eluuid).value
+        var desc = document.getElementById('edit-descripcion'+eluuid).value
+        var symb = document.getElementById('edit-simbolo'+eluuid).value
+        var values = document.getElementById('edit-valores'+eluuid).value
+
+        var form = {nombre:name,descripcion:desc,simbolo:symb,valores_de_mercado:values}
+        var url = 'https://appnyse.herokuapp.com/api/empresas/' + eluuid + '/'
+        axios.put(url, form).then(response=> {console.log(response); this.getEmpresas()}).catch(error=>console.log(error))
+      },
+      showInfo(eluuid){
+        var element = document.getElementById('edit-div-inputs'+eluuid)
+        element.classList.toggle('edit-inputs-show')
+      },
       getEmpresas(){
         var url = 'https://appnyse.herokuapp.com/api/empresas/'
          axios
@@ -129,6 +160,11 @@ export default {
 
 
 <style>
+body{
+  background-color: peru;
+}
+
+
 input {
   border: 2px solid currentcolor;
 }
@@ -138,6 +174,14 @@ input:invalid {
 input:invalid:focus {
   background-image: linear-gradient(pink, lightgreen);
 }
+.edit-inputs{
+  display: none;
+}
+
+.edit-inputs-show{
+  display:block;
+}
+
 
 </style>
 

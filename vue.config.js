@@ -1,6 +1,6 @@
-module.exports = {
-    devServer: {
-      proxy: {
+//module.exports = {
+    //devServer: {
+      //proxy: {
       //  '^/symbol': {
           //target: 'https://www.findata.co.nz',
          // target:'https://www.findata.co.nz/markets/NYSE/symbols/M.htm',
@@ -14,6 +14,6 @@ module.exports = {
          //   '^/api' : '/'
            // }
       //  }
-      }
-    }
-  }
+     // }
+   // }
+ // }

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <div class="titulo">Verificador de Simbolos NYSE</div>
     <FormularioSymbol/>
   </div>
 </template>
@@ -27,4 +27,11 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+
+.titulo{
+  font-size: 3rem;
+  padding:50px
+}
+
 </style>
