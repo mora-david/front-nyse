@@ -1,13 +1,13 @@
 module.exports = {
     devServer: {
       proxy: {
-        '^/symbol': {
+      //  '^/symbol': {
           //target: 'https://www.findata.co.nz',
-          target:'https://www.findata.co.nz/markets/NYSE/symbols/M.htm',
-          pathRewrite: {
-            '^/symbol' : '/'
-            }
-        },
+         // target:'https://www.findata.co.nz/markets/NYSE/symbols/M.htm',
+       //   pathRewrite: {
+     //       '^/symbol' : '/'
+   //         }
+ //       },
    //     '^/api': {
      //     target: 'https://nyse-app-add.herokuapp.com',
        //   pathRewrite: {
