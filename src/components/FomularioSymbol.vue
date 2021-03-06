@@ -96,8 +96,8 @@ export default {
           return 0
         }
 
-          const url = 'https://www.findata.co.nz/markets/NYSE/symbols/'+this.symbol.charAt(0)+'.htm'
-          axios
+          //const url = 'https://www.findata.co.nz/markets/NYSE/symbols/'+this.symbol.charAt(0)+'.htm'
+          const url = 'symbol'
           //.get('/symbol/'+this.symbol.charAt(0)+'.htm',  {headers: {'Access-Control-Allow-Origin':'*'} })
           .get(url,  {headers: {'Access-Control-Allow-Origin':'*'} })
           .then(response => {if (response.data.includes('>'+ this.symbol + '</A></td>')){alert('El simbolo es correcto')} else{alert('Simbolo no valido'); return 0}
