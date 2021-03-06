@@ -7,7 +7,7 @@ module.exports = {
             '^/symbol' : '/'
             }
         },
-        '^/api': {
+        '/api': {
           target: 'https://nyse-app-add.herokuapp.com/api/empresas/',
           pathRewrite: {
             '^/api' : '/'
