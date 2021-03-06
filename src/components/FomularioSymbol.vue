@@ -103,7 +103,7 @@ export default {
           //axios.get('https://www.findata.co.nz/markets/NYSE/symbols/'+this.symbol.charAt(0)+'.htm', {headers:{}})
           //.then(response => {if (response.data.includes('>'+ this.symbol + '</A></td>')){alert('El simbolo es correcto')} else{alert('Simbolo no valido'); return 0}
           axios.post('https://appnyse.herokuapp.com/api/empresas/', {nombre:this.nombre, descripcion:this.descripcion, simbolo:this.symbol, valores_de_mercado:this.valores})
-          .then(response => {alert(String(response.data))
+          .then(response => {if(response.data == {ok:'ok'}){alert('registrado')} else{alert('simbolo no válido')}
           console.log(response.data)
           this.getEmpresas()
           this.symbol = ''
