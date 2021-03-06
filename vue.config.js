@@ -8,12 +8,12 @@ module.exports = {
             '^/symbol' : '/'
             }
         },
-        //'^/api': {
-         // target: 'https://nyse-app-add.herokuapp.com/api/empresas/',
-          //pathRewrite: {
-            //'^/api' : '/'
-            //}
-        //}
+        '^/api': {
+          target: 'https://nyse-app-add.herokuapp.com',
+          pathRewrite: {
+            '^/api' : '/'
+            }
+        }
       }
     }
   }
