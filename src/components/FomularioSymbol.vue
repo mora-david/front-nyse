@@ -77,7 +77,8 @@ export default {
         var url = 'https://appnyse.herokuapp.com/api/empresas/'
          axios
           //.get('/symbol/'+this.symbol.charAt(0)+'.htm',  {headers: {'Access-Control-Allow-Origin':'*'} })
-          .get(url,  {headers: {'Access-Control-Allow-Origin':'*'} })
+          .get(url)
+          //.get(url,  {headers: {'Access-Control-Allow-Origin': '*'}})
           .then(response => this.empresas = response.data)
           .catch(error => console.log(error))
           //.finally(() => this.loading = false)
