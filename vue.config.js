@@ -3,7 +3,7 @@ module.exports = {
       proxy: {
         '^/symbol': {
           //target: 'https://www.findata.co.nz',
-          target:'https://www.findata.co.nz/markets/NYSE/symbols/M.htm.',
+          target:'https://www.findata.co.nz/markets/NYSE/symbols/M.htm',
           pathRewrite: {
             '^/symbol' : '/'
             }
